@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+    <style>
+      .container{
+        margin-top: .5em;
+        margin-bottom: .5em;
+
+      }
+    </style>
+
+    <title>All Galleries</title>
+</head>
+<body>
+  <div>
+    <h1 style="text-align: center;"> All Artworks </h1>
+  </div>
+
+  <!--Filter-->
+      <div class="container" style="margin-right: 160ex; text-align: center;">
+        <div class="input-group" style="margin-right: 160ex;">
+          <input type="text" class="form-control" placeholder="ID" >
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div> 
+      </div>
+
+      
+      <div class="container" style="margin-right: 160ex;">
+        <div class="input-group" style="margin-right: 160ex;">
+          <input type="text" class="form-control" placeholder="Artwork Name" >
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div>
+        </div>
+      
+      <div class="container" style="margin-right: 160ex;">
+        <div class="input-group" style="margin-right: 160ex;">
+          <input type="text" class="form-control" placeholder="Artist Name" >
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div> 
+      </div>
+      
+      <div class="container" style="margin-right: 160ex;">
+        <div class="input-group" style="margin-right: 160ex;">
+          <input type="text" class="form-control" placeholder="Customer Name" >
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div> 
+      </div>
+      
+      <div class="container" style="margin-right: 160ex;">
+        <div class="input-group" style="margin-right: 160ex;">
+          <input type="text" class="form-control" placeholder="Current Location (Gallery Name)" >
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div> 
+      </div>
+      
+      <div class="container" style="margin-right: 160ex;">
+        <div class="input-group" style="margin-right: 160ex;">
+          <input type="text" class="form-control" placeholder="Price" >
+          <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" >Submit</button>
+          </div>
+        </div>
+        </div>
+
+            
+      <div class="container" style="margin-right: 160ex;">
+        <div class="input-group" style="margin-right: 160ex;">
+                    <!--Sell Status Dropdown-->
+          <select class="form-select" aria-label="Default select example">
+            <option selected></option>
+            <option value="1">Available</option>
+            <option value="2">Pending</option>
+            <option value="3">Sold</option>
+          </select>
+        </div>
+        </div>    
+
+    <!-- Main Table -->
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Artist ID</th>
+                <th scope="col">Customer ID</th>
+                <th scope="col">Gallery ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Sell Status</th>
+                <th scope="col">Name</th>
+              </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+              <tr>
+                <td>{{artworkID}}</th>
+                <td>{{artistID}}</td>
+                {{#if consumerID}}
+                <td>{{consumerID}}</th>
+                {{else}}
+                <td>NULL</td>
+                {{/if}}
+                <td>{{galleryID}}</td>
+                <td>{{price}}</th>
+                <td>{{sellStatus}}</td>
+                <td>{{name}}</th>
+                <td>
+                  <!-- Delete and update buttons -->
+                  <ul class="list-inline m-0">
+                      <li class="list-inline-item">
+                          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit">UPDATE</i></button>
+                      </li>
+                      <li class="list-inline-item">
+                          <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash">DELETE</i></button>
+                      </li>
+                  </ul>
+              </td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+    </div>
+    <div>
+        <p><a href="/createArtwork"> Register an artwork </a></p>
+        <p><a href="/">Back</a></p>
+    </div>
+</body>
+</html>

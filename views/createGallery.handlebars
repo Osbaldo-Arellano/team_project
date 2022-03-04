@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    
+    <title>Registration</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Gallery Registration</h1>
+    <div style="width:800px; margin:0 auto;">
+        <form class="row g-3 needs-validation" method="POST" action="/createGallery">
+            <div class="row">
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Address ID" name="AddressID">
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Gallery Name" name="GalleryName">
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Gallery Email" name="Email">
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Gallery Phone Number" name="PhoneNumber">
+                </div>
+
+            </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+          </form>
+
+          <div>
+            <p><a href="/allGalleries">Back</a></p>
+          </div>
+    </div>
+    
+
+</body>
+</html>

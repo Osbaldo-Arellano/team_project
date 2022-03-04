@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+    />
+
+    <style>
+      .container{
+        margin-bottom: .5em;
+      }
+    </style>
+  
+    <title> All Showrooms </title>
+</head>
+<body>
+    <h1 style="text-align: center;">All Showrooms</h1> 
+  
+    
+  <!--Filter-->
+  <div class="container" style="margin-right: 160ex; text-align: center;">
+    <div class="input-group" style="margin-right: 160ex;">
+      <input type="text" class="form-control" placeholder="Search by ID" >
+      <div class="input-group-prepend">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="container" style="margin-right: 160ex;">
+    <div class="input-group" style="margin-right: 160ex;">
+      <input type="text" class="form-control" placeholder="Search by Gallery Name" >
+      <div class="input-group-prepend">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="container" style="margin-right: 160ex;">
+    <div class="input-group" style="margin-right: 160ex;">
+      <input type="text" class="form-control" placeholder="Search by Artist Name" >
+      <div class="input-group-prepend">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="container" style="margin-right: 160ex;">
+    <div class="input-group" style="margin-right: 160ex;">
+      <input type="text" class="form-control" placeholder="Search by Room Number" >
+      <div class="input-group-prepend">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+    </div> 
+  </div>
+
+  <div class="row" style="margin: 1.8ex;">
+        <a href="/createShowroom" type="button" class="btn btn-primary align-self-center">Register a Showroom</a>
+  </div>
+
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Gallery ID</th>
+                <th scope="col">Artist ID</th>
+                <th scope="col">Room Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each rows}} 
+                <tr> 
+                    <td>{{showRoomID}}</td> 
+                    <td>{{galleryID}}</td> 
+                    <td>{{artistID}}</td> 
+                    <td>{{roomNumber}}</td>
+                    <td>
+                  <!-- Call to action buttons -->
+                  <ul class="list-inline m-0">
+                      <li class="list-inline-item">
+                          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit">UPDATE</i></button>
+                      </li>
+                      <li class="list-inline-item">
+                          <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash">DELETE</i></button>
+                      </li>
+                  </ul>
+              </td>
+                </tr> 
+            {{/each}} 
+            </tbody>
+          </table>
+    </div>
+    
+    <div>
+        <p><a href="/">Back</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+    <style>
+      .container{
+        margin-bottom: .5ex;
+            }
+    </style>
+
+    <title>All Galleries</title>
+</head>
+<body>
+  <div>
+    <h1 style="text-align: center;"> All Artists </h1>
+  </div>
+
+<div class="container" style="margin-right: 160ex; text-align: center;">
+  <div class="input-group" style="margin-right: 160ex;">
+    <input type="text" class="form-control" placeholder="Name" >
+    <div class="input-group-prepend">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </div> 
+</div>
+
+<div class="container" style="margin-right: 160ex;">
+  <div class="input-group" style="margin-right: 160ex;">
+    <input type="text" class="form-control" placeholder="Address" >
+    <div class="input-group-prepend">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </div> 
+</div>
+
+<div class="container" style="margin-right: 160ex;">
+  <div class="input-group" style="margin-right: 160ex;">
+    <input type="text" class="form-control" placeholder="Email" >
+    <div class="input-group-prepend">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </div> 
+</div>
+
+<div class="container" style="margin-right: 160ex;">
+  <div class="input-group" style="margin-right: 160ex;">
+    <input type="text" class="form-control" placeholder="Gallery Name" >
+    <div class="input-group-prepend">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </div> 
+</div>
+
+<div class="container" style="margin-right: 160ex;">
+  <div class="input-group" style="margin-right: 160ex;">
+    <input type="text" class="form-control" placeholder="Phone Number" >
+    <div class="input-group-prepend">
+      <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+  </div> 
+</div>
+
+  <!-- Main Table -->
+  </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Gallery ID</th>
+                <th scope="col">Address ID</th>
+                <th scope="col">Artist Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+              </tr>
+            </thead>
+            <tbody>
+                {{#each rows}}
+              <tr>
+                <td>{{artistID}}</th>
+                <td>{{galleryID}}</td>
+                <td>{{addressID}}</td>
+                <td>{{artistName}}</td>
+                <td>{{email}}</td>
+                <td>{{phoneNumber}}</td>
+                <td>
+                  <!-- Call to action buttons -->
+                  <ul class="list-inline m-0">
+                      <li class="list-inline-item">
+                          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit">UPDATE</i></button>
+                      </li>
+                      <li class="list-inline-item">
+                          <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash">DELETE</i></button>
+                      </li>
+                  </ul>
+              </td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+    </div>
+    <div>
+        <p><a href="/createArtist"> Register an artist </a></p>
+        <p><a href="/">Back</a></p>
+    </div>
+</body>
+</html>
