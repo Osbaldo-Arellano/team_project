@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous"
+  />
+  <style>
+    #form_input{
+      margin-bottom: .5em;
+    }
+    #submit{
+      margin-top: 2em;
+    }
+  </style>
+  <title>Update Gallery</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16" style="margin-right:3%">
+            <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
+            <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
+            <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
+        </svg>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Homepage</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/allShowrooms">Showrooms</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/allGalleries">Galleries</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/allArtists">Artists</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/allArtworks">Artworks</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/allAddresses">Addresses</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/allConsumers">Consumers</a>
+                </li>
+            </ul>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Homepage</a></li>
+            <li class="breadcrumb-item"><a href="/allGalleries">All Galleries</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Update Gallery</li>
+          </ol>
+        </div>
+    </div>
+  </nav>
+  <div class="container">
+    {{#if alert}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{alert}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {{/if}}
+    {{#if failure}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        There was an error editing the database entry. Please try again.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {{/if}}
+    <div style="width:800px; margin:0 auto;">
+      {{#each rows}}
+      <form class="row g-3 needs-validation" method="POST" action="/editGallery/{{this.galleryID}}">
+        <div class="col">
+          <div class="col" id="form_input">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" value="{{this.addressID}}" placeholder="Address ID (from available addresses)" name="AddressID">
+              <label for="form-control">Address ID</label>
+            </div>
+          </div>
+          <div class="col" id="form_input">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" value="{{this.galleryName}}" placeholder="Gallery Name" name="GalleryName">
+              <label for="form-control">Gallery Name</label>
+            </div>
+          </div>
+          <div class="col" id="form_input">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" value="{{this.email}}" placeholder="Gallery Email" name="Email">
+              <label for="form-control">Gallery Email</label>
+            </div>
+          </div>
+          <div class="col" id="form_input">
+            <div class="form-floating mb-3">
+              <input type="tel" class="form-control" value="{{this.phoneNumber}}" placeholder="Gallery Phone Number" name="PhoneNumber">
+              <label for="form-control">Gallery Phone Number</label>
+            </div>
+          </div>
+          <div class="col" style="text-align:center" id="submit">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+      {{/each}}
+    </div>
+  </div>
+</body>
+</html>

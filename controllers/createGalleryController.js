@@ -1,22 +1,25 @@
-var getConnection = require ('../dbcon.js')
+const getConnection = require ('../dbcon.js')
 
-// Add new showroom
+// Add new gallery
 exports.form = (req, res) =>{
     getConnection((err, connection) => {
-        res.render('createGallery');
-
+        if(!err){
+            let failure = req.query.failed;
+            res.render('createGallery', { failure });
+        }
     });
 };
-
 exports.create = (req, res) =>{
     const {AddressID, GalleryName, Email, PhoneNumber} = req.body;
     getConnection((err, connection) => {
         connection.query('INSERT INTO Gallery SET addressID = ?, galleryName = ?, email = ?, phoneNumber = ? ',[AddressID, GalleryName, Email, PhoneNumber], (err, rows) => {
             connection.release();
             if(!err){
-                res.render('createGallery');
+                res.render('createGallery', { alert: `The ${GalleryName} gallery has been created.` });
+            } else{
+                let failed = encodeURIComponent('There was an error adding to the database. Please try again.');
+                res.redirect('/createGallery?failed=' + failed);
             }
-
         });
     });
 };

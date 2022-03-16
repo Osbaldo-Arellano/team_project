@@ -1,12 +1,13 @@
-var getConnection = require ('../dbcon.js')
+const getConnection = require ('../dbcon.js')
 
+// View Consumers
 exports.view = (req, res) =>{
     getConnection((err, connection) => {
         connection.query('SELECT * FROM Consumer', (err, rows) => {
             connection.release();
             if(!err){
-                res.render('consumer', { rows });
-            }
+                let removedConsumer = req.query.removed;
+                res.render('consumer', { rows, removedConsumer });            }
            console.log(rows);
         });
     });

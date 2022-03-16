@@ -1,13 +1,13 @@
-var mysql = require('mysql');
-var pool = mysql.createPool({
+const mysql = require('mysql');
+const pool = mysql.createPool({
   connectionLimit : 10,
   host            : 'classmysql.engr.oregonstate.edu',
   user            : 'cs340_arellano',
   password        : '2809',
-  database        : 'cs340_arellano'
+  database        : 'cs340_arellano',
 });
 
-var getConnection = function (cb) {
+const getConnection = function (cb) {
   pool.getConnection(function (err, connection) {
       //if(err) throw err;
       //pass the error to the cb instead of throwing it
