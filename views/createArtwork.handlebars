@@ -13,6 +13,13 @@
     crossorigin="anonymous"
   />
   <style>
+    body{
+      background-color: #f8dbbf;
+    }
+    .table-responsive {
+      background-color: #fcf1e6;
+      border-radius: 20px;
+    }
     #form_input{
       margin-bottom: .5em;
     }
@@ -26,13 +33,11 @@
   <title>Artwork Registration</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d8453177;">
     <div class="container-fluid">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-server" viewBox="0 0 16 16" style="margin-right:3%">
-            <path d="M1.333 2.667C1.333 1.194 4.318 0 8 0s6.667 1.194 6.667 2.667V4c0 1.473-2.985 2.667-6.667 2.667S1.333 5.473 1.333 4V2.667z"/>
-            <path d="M1.333 6.334v3C1.333 10.805 4.318 12 8 12s6.667-1.194 6.667-2.667V6.334a6.51 6.51 0 0 1-1.458.79C11.81 7.684 9.967 8 8 8c-1.966 0-3.809-.317-5.208-.876a6.508 6.508 0 0 1-1.458-.79z"/>
-            <path d="M14.667 11.668a6.51 6.51 0 0 1-1.458.789c-1.4.56-3.242.876-5.21.876-1.966 0-3.809-.316-5.208-.876a6.51 6.51 0 0 1-1.458-.79v1.666C1.333 14.806 4.318 16 8 16s6.667-1.194 6.667-2.667v-1.665z"/>
-        </svg>
+        <div class="logo-image" style="width: 70px; height: 70px; border-radius: 50%; margin-top: -6px; margin-right:2em">
+          <img src="RedPandaLogo.png" class="img-fluid">
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -48,7 +53,7 @@
                   <a class="nav-link" href="/allArtists">Artists</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/allArtworks">Artworks</a>
+                  <a class="nav-link active" style="text-decoration:underline" aria-current="page" href="/allArtworks">Artworks</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/allAddresses">Addresses</a>
@@ -57,10 +62,10 @@
                   <a class="nav-link" href="/allConsumers">Consumers</a>
                 </li>
             </ul>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Homepage</a></li>
-            <li class="breadcrumb-item"><a href="/allArtworks">All Artworks</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Artwork Registration</li>
+          <ol class="breadcrumb" style="background-color: #92261877">
+            <li class="breadcrumb-item"><a style="color:rgb(253, 245, 245)" href="/">Homepage</a></li>
+            <li class="breadcrumb-item active" style="color:rgb(248, 214, 175)" aria-current="page">All Artworks</li>
+            <li class="breadcrumb-item active" aria-current="page" style="color:rgb(248, 184, 131)">Artwork Registration</li>
           </ol>
         </div>
     </div>
@@ -78,6 +83,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     {{/if}}
+    <h1 style="text-align:center; margin-top:.75em; margin-bottom:.5em; font-weight:bold; color:rgb(83, 88, 117)">Artwork Registration</h1>
     <div style="width:800px; margin:0 auto;">
       <form class="row g-3 needs-validation" method="POST" action="/createArtwork">
         <div class="col">
@@ -85,7 +91,7 @@
             <input type="text" class="form-control" placeholder="Artist ID" name="ArtistID">
           </div>
           <div class="col" id="form_input">
-            <input type="text" class="form-control" placeholder="Consumer ID" name="ConsumerID">
+            <input type="text" class="form-control" placeholder="Consumer ID (NULL OK)" name="ConsumerID">
           </div>
           <div class="col" id="form_input">
             <input type="text" class="form-control" placeholder="Gallery ID" name="GalleryID">
@@ -104,6 +110,89 @@
           </div>
         </div>
       </form>
+    </div>
+
+    <!-- Available Galleries and Artists for reference tables -->
+    <div>
+      <div class="table-responsive" style="margin-top:5em">
+        <h3 style="text-align:center; color:rgb(83, 88, 117); margin-bottom:.5em">Available Artists:</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Artist ID</th>
+              <th scope="col">Gallery ID</th>
+              <th scope="col">Address ID</th>
+              <th scope="col">Artist Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each artistRows}}
+            <tr>
+              <td>{{artistID}}</td>
+              <td>{{galleryID}}</td>
+              <td>{{addressID}}</td>
+              <td>{{artistName}}</td>
+              <td>{{email}}</td>
+              <td>{{phoneNumber}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="table-responsive" style="margin-top:5em">
+        <h3 style="text-align:center; color:rgb(83, 88, 117); margin-bottom:.5em">Available Consumers</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Consumer ID</th>
+              <th scope="col">Consumer Name</th>
+              <th scope="col">Artwork ID</th>
+              <th scope="col">Address ID</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each consumerRows}}
+            <tr>
+              <td>{{consumerID}}</td>
+              <td>{{consumerName}}</td>
+              <td>{{artworkID}}</td>
+              <td>{{addressID}}</td>
+              <td>{{email}}</td>
+              <td>{{phoneNumber}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
+      <div class="table-responsive" style="margin-top:5em">
+        <h3 style="text-align:center; color:rgb(83, 88, 117); margin-bottom:.5em">Available Galleries:</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Gallery ID</th>
+              <th scope="col">Address ID</th>
+              <th scope="col">Gallery Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+          {{#each galleryRows}}
+            <tr>
+              <td>{{galleryID}}</td>
+              <td>{{addressID}}</td>
+              <td>{{galleryName}}</td>
+              <td>{{email}}</td>
+              <td>{{phoneNumber}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </body>

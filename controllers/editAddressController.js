@@ -6,7 +6,8 @@ exports.edit = (req, res) => {
         connection.query('SELECT * FROM Address WHERE addressID = ?', [req.params.addressID], (err, rows) => {
             connection.release();
             if(!err){
-                res.render('editAddress', { rows });
+                let failure = req.query.failed;
+                res.render('editAddress', { rows, failure });
             }
            console.log(rows);
         });
@@ -25,14 +26,13 @@ exports.update = (req, res) => {
                         connection.release();
                         if(!err){
                             res.render('editAddress', { rows, alert: `The address has been updated.`});
-                        } else{
-                            res.render('404');
                         }
                        console.log(rows);
                     });
                 });
-            } else{
-                res.render('404');
+            } else {
+                let failed = encodeURIComponent('There was an error editing the database entry. Please try again.');
+                res.redirect('/editAddress/' + req.params.addressID + '?failed=' + failed);
             }
            console.log(rows);
         });
